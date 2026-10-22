@@ -1,0 +1,13 @@
+# POST to the paths in RATE_LIMIT_PATHS (such as login forms) at most RATE_LIMIT_EVENTS times in
+# RATE_LIMIT_WINDOW from one client address, then 429. Other requests are not limited.
+rate_limit {
+	zone post {
+		match {
+			method POST
+			path {$RATE_LIMIT_PATHS}
+		}
+		key {remote_host}
+		events {$RATE_LIMIT_EVENTS:10}
+		window {$RATE_LIMIT_WINDOW:1m}
+	}
+}

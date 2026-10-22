@@ -1,0 +1,6 @@
+# The paths in ADMIN_PATHS (such as /admin*) only from the addresses in ADMIN_IPS, the rest from anywhere
+@admin_denied {
+	path {$ADMIN_PATHS}
+	not remote_ip {$ADMIN_IPS}
+}
+respond @admin_denied 403

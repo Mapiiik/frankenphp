@@ -1,0 +1,3 @@
+# The whole site only from the addresses in ADMIN_IPS
+@denied not remote_ip {$ADMIN_IPS}
+respond @denied 403

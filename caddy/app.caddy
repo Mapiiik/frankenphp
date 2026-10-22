@@ -1,0 +1,14 @@
+# What belongs to the application, imported by the Caddyfile. The image of the application replaces
+# this file with its own, keeping the three snippets.
+
+# Inside the global frankenphp block, such as num_threads
+(app_frankenphp) {
+}
+
+# Inside the site, such as headers of its own
+(app_site) {
+}
+
+# Inside php_server
+(app_php_server) {
+}
