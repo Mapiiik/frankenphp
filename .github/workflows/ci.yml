@@ -59,8 +59,8 @@ jobs:
           builds='[]'
           merges='[]'
           for php in $PHP_VERSIONS; do
-            base="dunglas/frankenphp:php${php}-alpine"
-            builder="dunglas/frankenphp:builder-php${php}-alpine"
+            base="dunglas/frankenphp:php${php}"
+            builder="dunglas/frankenphp:builder-php${php}"
             frankenphp="$(docker run --rm "$base" frankenphp version | sed -E 's/^FrankenPHP v([^ ]+).*/\1/')"
             digest="$(for i in "$base" "$builder" "$XCADDY_IMAGE"; do docker buildx imagetools inspect --raw "$i"; done | sha256sum | cut -c1-12)"
             key="build-${frankenphp}-php${php}-${digest}"

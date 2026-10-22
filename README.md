@@ -1,7 +1,10 @@
 # FrankenPHP
 
 The base of our PHP applications in Docker, so the same Caddy configuration is not copied into every
-repository. The image is the official `dunglas/frankenphp` (Alpine) with:
+repository. The image is the official `dunglas/frankenphp` on Debian, not Alpine: PHP with threads
+(ZTS), which FrankenPHP needs, is slow under musl. On the customer page of Watcher CRM, which loads
+48 parts at once, a part took 3.6 s on Alpine and 0.8 s on Debian (median). On top of the official
+image:
 
 - FrankenPHP rebuilt with the modules of the official build and the rate limit module,
 - PHP in production settings, without its version in the headers, UTC unless the application sets
